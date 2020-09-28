@@ -24,6 +24,8 @@
 #define REPROBLAS_H_
 #include <complex.h>
 
+#include "reproBLAS_api.h"
+
 double reproBLAS_rdsum(const int fold, const int N, const double* X, const int incX);
 double reproBLAS_rdasum(const int fold, const int N, const double* X, const int incX);
 double reproBLAS_rdnrm2(const int fold, const int N, const double* X, const int incX);
@@ -94,67 +96,67 @@ void reproBLAS_rcgemm(const int fold, const char Order,
             const void *B, const int ldb,
             const void *beta, void *C, const int ldc);
 
-double reproBLAS_dsum(const int N, const double* X, const int incX);
-double reproBLAS_dasum(const int N, const double* X, const int incX);
-double reproBLAS_dnrm2(const int N, const double* X, const int incX);
-double reproBLAS_ddot(const int N, const double* X, const int incX, const double* Y, const int incY);
+REPROBLAS_API double reproBLAS_dsum(const int N, const double* X, const int incX);
+REPROBLAS_API double reproBLAS_dasum(const int N, const double* X, const int incX);
+REPROBLAS_API double reproBLAS_dnrm2(const int N, const double* X, const int incX);
+REPROBLAS_API double reproBLAS_ddot(const int N, const double* X, const int incX, const double* Y, const int incY);
 
-float reproBLAS_sdot(const int N, const float* X, const int incX, const float* Y, const int incY);
-float reproBLAS_sasum(const int N, const float* X, const int incX);
-float reproBLAS_ssum(const int N, const float* X, const int incX);
-float reproBLAS_snrm2(const int N, const float* X, const int incX);
+REPROBLAS_API float reproBLAS_sdot(const int N, const float* X, const int incX, const float* Y, const int incY);
+REPROBLAS_API float reproBLAS_sasum(const int N, const float* X, const int incX);
+REPROBLAS_API float reproBLAS_ssum(const int N, const float* X, const int incX);
+REPROBLAS_API float reproBLAS_snrm2(const int N, const float* X, const int incX);
 
-void reproBLAS_zsum_sub(const int N, const void* X, int incX, void *sum);
-double reproBLAS_dzasum(const int N, const void* X, const int incX);
-double reproBLAS_dznrm2(const int N, const void* X, int incX);
-void reproBLAS_zdotc_sub(const int N, const void* X, const int incX, const void* Y, const int incY, void *dotc);
-void reproBLAS_zdotu_sub(const int N, const void* X, const int incX, const void* Y, const int incY, void *dotu);
+REPROBLAS_API void reproBLAS_zsum_sub(const int N, const void* X, int incX, void *sum);
+REPROBLAS_API double reproBLAS_dzasum(const int N, const void* X, const int incX);
+REPROBLAS_API double reproBLAS_dznrm2(const int N, const void* X, int incX);
+REPROBLAS_API void reproBLAS_zdotc_sub(const int N, const void* X, const int incX, const void* Y, const int incY, void *dotc);
+REPROBLAS_API void reproBLAS_zdotu_sub(const int N, const void* X, const int incX, const void* Y, const int incY, void *dotu);
 
-void reproBLAS_csum_sub(const int N, const void* X, const int incX, void *sum);
-float reproBLAS_scasum(const int N, const void* X, const int incX);
-float reproBLAS_scnrm2(const int N, const void* X, const int incX);
-void reproBLAS_cdotc_sub(const int N, const void* X, const int incX, const void* Y, const int incY, void *dotc);
-void reproBLAS_cdotu_sub(const int N, const void* X, const int incX, const void* Y, const int incY, void *dotu);
+REPROBLAS_API void reproBLAS_csum_sub(const int N, const void* X, const int incX, void *sum);
+REPROBLAS_API float reproBLAS_scasum(const int N, const void* X, const int incX);
+REPROBLAS_API float reproBLAS_scnrm2(const int N, const void* X, const int incX);
+REPROBLAS_API void reproBLAS_cdotc_sub(const int N, const void* X, const int incX, const void* Y, const int incY, void *dotc);
+REPROBLAS_API void reproBLAS_cdotu_sub(const int N, const void* X, const int incX, const void* Y, const int incY, void *dotu);
 
-void reproBLAS_dgemv(const char Order, const char TransA,
+REPROBLAS_API void reproBLAS_dgemv(const char Order, const char TransA,
             const int M, const int N,
             const double alpha, const double *A, const int lda,
             const double *X, const int incX,
             const double beta, double *Y, const int incY);
-void reproBLAS_dgemm(const char Order, const char TransA, const char TransB,
+REPROBLAS_API void reproBLAS_dgemm(const char Order, const char TransA, const char TransB,
             const int M, const int N, const int K,
             const double alpha, const double *A, const int lda,
             const double *B, const int ldb,
             const double beta, double *C, const int ldc);
 
-void reproBLAS_sgemv(const char Order, const char TransA,
+REPROBLAS_API void reproBLAS_sgemv(const char Order, const char TransA,
             const int M, const int N,
             const float alpha, const float *A, const int lda,
             const float *X, const int incX,
             const float beta, float *Y, const int incY);
-void reproBLAS_sgemm(const char Order, const char TransA, const char TransB,
+REPROBLAS_API void reproBLAS_sgemm(const char Order, const char TransA, const char TransB,
             const int M, const int N, const int K,
             const float alpha, const float *A, const int lda,
             const float *B, const int ldb,
             const float beta, float *C, const int ldc);
 
-void reproBLAS_zgemv(const char Order, const char TransA,
+REPROBLAS_API void reproBLAS_zgemv(const char Order, const char TransA,
             const int M, const int N,
             const void *alpha, const void *A, const int lda,
             const void *X, const int incX,
             const void *beta, void *Y, const int incY);
-void reproBLAS_zgemm(const char Order, const char TransA, const char TransB,
+REPROBLAS_API void reproBLAS_zgemm(const char Order, const char TransA, const char TransB,
             const int M, const int N, const int K,
             const void *alpha, const void *A, const int lda,
             const void *B, const int ldb,
             const void *beta, void *C, const int ldc);
 
-void reproBLAS_cgemv(const char Order, const char TransA,
+REPROBLAS_API void reproBLAS_cgemv(const char Order, const char TransA,
             const int M, const int N,
             const void *alpha, const void *A, const int lda,
             const void *X, const int incX,
             const void *beta, void *Y, const int incY);
-void reproBLAS_cgemm(const char Order, const char TransA, const char TransB,
+REPROBLAS_API void reproBLAS_cgemm(const char Order, const char TransA, const char TransB,
             const int M, const int N, const int K,
             const void *alpha, const void *A, const int lda,
             const void *B, const int ldb,
