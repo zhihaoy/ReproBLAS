@@ -42,9 +42,10 @@ add_subdirectory(src/binned)
 add_subdirectory(src/binnedBLAS)
 add_subdirectory(src/reproBLAS)
 
-target_sources(binned PRIVATE include/binned.h)
-target_sources(binnedBLAS PRIVATE include/binnedBLAS.h)
-target_sources(reproBLAS PRIVATE include/reproBLAS.h)
+target_sources(binned PRIVATE config.h include/binned.h)
+target_sources(binnedBLAS PRIVATE config.h include/binnedBLAS.h)
+target_sources(reproBLAS PRIVATE config.h include/reproBLAS.h
+	${CMAKE_CURRENT_BINARY_DIR}/include/reproBLAS_api.h)
 
 target_link_libraries(reproBLAS PRIVATE binned binnedBLAS)
 

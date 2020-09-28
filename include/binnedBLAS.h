@@ -32,7 +32,6 @@
 #ifndef BINNEDBLAS_H_
 #define BINNEDBLAS_H_
 #include "binned.h"
-#include "reproBLAS.h"
 
 float binnedBLAS_samax(const int N, const float *X, const int incX);
 double binnedBLAS_damax(const int N, const double *X, const int incX);
