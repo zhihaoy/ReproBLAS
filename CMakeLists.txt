@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.17)
 project(reproBLAS LANGUAGES C)
 
 include(GenerateExportHeader)
+include(GNUInstallDirs)
 
 option(BUILD_SHARED_LIBS "Build shared library" ON)
 
@@ -14,8 +15,8 @@ else()
 endif()
 set(CMAKE_VS_JUST_MY_CODE_DEBUGGING ON)
 if(MSVC)
-	foreach(flagvar
-	    CMAKE_CXX_FLAGS_RELWITHDEBINFO CMAKE_C_FLAGS_RELWITHDEBINFO)
+	foreach(flagvar CMAKE_CXX_FLAGS_RELWITHDEBINFO
+	                CMAKE_C_FLAGS_RELWITHDEBINFO)
 		string(REGEX REPLACE "/Ob1" "/Ob2" ${flagvar} "${${flagvar}}")
 	endforeach()
 endif()
@@ -45,7 +46,7 @@ add_subdirectory(src/reproBLAS)
 target_sources(binned PRIVATE config.h include/binned.h)
 target_sources(binnedBLAS PRIVATE config.h include/binnedBLAS.h)
 target_sources(reproBLAS PRIVATE config.h include/reproBLAS.h
-	${CMAKE_CURRENT_BINARY_DIR}/include/reproBLAS_api.h)
+    ${CMAKE_CURRENT_BINARY_DIR}/include/reproBLAS_api.h)
 
 target_link_libraries(reproBLAS PRIVATE binned binnedBLAS)
 
@@ -58,5 +59,17 @@ set_target_properties(reproBLAS PROPERTIES
     INSTALL_RPATH_USE_LINK_PATH TRUE
     BUILD_RPATH_USE_ORIGIN TRUE)
 
-if(BUILD_TESTING)
-endif()
+set_target_properties(reproBLAS PROPERTIES
+    VERSION 2.1.0
+    SOVERSION 2
+    INTERFACE_INCLUDE_DIRECTORIES $<INSTALL_INTERFACE:include>)
+
+install(FILES include/reproBLAS.h
+              ${CMAKE_CURRENT_BINARY_DIR}/include/reproBLAS_api.h
+        DESTINATION include/reproBLAS)
+install(TARGETS reproBLAS EXPORT reproBLAS-targets)
+
+install(EXPORT reproBLAS-targets
+        FILE reproBLAS-config.cmake
+        NAMESPACE reproBLAS::
+        DESTINATION share/reproBLAS)
