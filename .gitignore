@@ -1,6 +1,20 @@
-build/*
-tests/common/test_data
-doc/*
+# vim
+*~
+.*.swp
+
+# vscode
+.vscode/
+
+# artifacts
+build/
+
+# cache
+__pycache__/
+/Default/
 *.DS_Store
 *.pyc
+
+# generated
+tests/common/test_data
+doc/*
 *.log
