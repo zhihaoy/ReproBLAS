@@ -22,9 +22,12 @@
  */
 #ifndef REPROBLAS_H_
 #define REPROBLAS_H_
-#include <complex.h>
 
 #include "reproBLAS_api.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 double reproBLAS_rdsum(const int fold, const int N, const double* X, const int incX);
 double reproBLAS_rdasum(const int fold, const int N, const double* X, const int incX);
@@ -161,5 +164,9 @@ REPROBLAS_API void reproBLAS_cgemm(const char Order, const char TransA, const ch
             const void *alpha, const void *A, const int lda,
             const void *B, const int ldb,
             const void *beta, void *C, const int ldc);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
