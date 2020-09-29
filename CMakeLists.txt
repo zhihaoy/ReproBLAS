@@ -69,6 +69,6 @@ install(FILES include/reproBLAS.h
 install(TARGETS reproBLAS EXPORT reproBLAS-targets)
 
 install(EXPORT reproBLAS-targets
-        FILE reproBLAS-config.cmake
+        FILE reproblas-config.cmake
         NAMESPACE reproBLAS::
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
