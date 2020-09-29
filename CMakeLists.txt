@@ -13,7 +13,6 @@ if(BUILD_SHARED_LIBS)
 else()
 	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
-set(CMAKE_VS_JUST_MY_CODE_DEBUGGING ON)
 if(MSVC)
 	foreach(flagvar CMAKE_CXX_FLAGS_RELWITHDEBINFO
 	                CMAKE_C_FLAGS_RELWITHDEBINFO)
