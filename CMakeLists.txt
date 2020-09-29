@@ -72,4 +72,4 @@ install(TARGETS reproBLAS EXPORT reproBLAS-targets)
 install(EXPORT reproBLAS-targets
         FILE reproBLAS-config.cmake
         NAMESPACE reproBLAS::
-        DESTINATION share/reproBLAS)
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
